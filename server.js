@@ -20,7 +20,8 @@ app.use((req, res, next) => {
 app.use(express.static('public'));
 
 // Initialize SQLite database
-const db = new sqlite3.Database('./todos.db', (err) => {
+const dbPath = path.join(__dirname, 'todos.db');
+const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Error opening database:', err.message);
   } else {
